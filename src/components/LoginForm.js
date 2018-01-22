@@ -54,13 +54,20 @@ class LoginForm extends Component {
         </CardSection>
         {this.props.error ? this.renderErrorText.bind(this)() : <View />}
         <CardSection>{this.renderLogInButton.bind(this)()}</CardSection>
+        <CardSection>
+          <CommonButton
+            onPress={() => {
+              this.props.setEmployeeInfo({ field: 'name', value: 'August' });
+            }}
+            title="Test"
+          />
+        </CardSection>
       </Card>
     );
   }
 }
 //{ onPress, title }
 function mapStateToProps(state) {
-  console.log('STATE: ', state);
   return {
     email: state.authReducer.email,
     password: state.authReducer.password,

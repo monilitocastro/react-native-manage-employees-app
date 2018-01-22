@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { Router, Scene } from 'react-native-router-flux';
 import firebase from 'firebase';
 import reduxThunk from 'redux-thunk';
 
 import reducers from '../reducers';
 
 import LoginForm from './LoginForm';
+import EmployeeList from './EmployeeList';
+import EmployeeManage from './EmployeeManage';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
@@ -28,7 +31,17 @@ export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
-        <LoginForm />
+        <Router>
+          <Scene key="root" hideNavBar>
+            <Scene key="auth" initial>
+              <Scene component={LoginForm} key="loginForm" title="Log In" />
+            </Scene>
+            <Scene key="main">
+              <Scene component={EmployeeList} key="employeeList" title="Employees" initial />
+              <Scene component={EmployeeManage} key="employeeManage" title="Manage Employee" />
+            </Scene>
+          </Scene>
+        </Router>
       </Provider>
     );
   }
