@@ -9,7 +9,7 @@ import reducers from '../reducers';
 
 import LoginForm from './LoginForm';
 import EmployeeList from './EmployeeList';
-import EmployeeManage from './EmployeeManage';
+import EmployeeCreate from './EmployeeCreate';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
@@ -38,7 +38,7 @@ export default class App extends Component<{}> {
             </Scene>
             <Scene key="main">
               <Scene component={EmployeeList} key="employeeList" title="Employees" initial />
-              <Scene component={EmployeeManage} key="employeeManage" title="Manage Employee" />
+              <Scene component={EmployeeCreate} key="employeeCreate" title="Create Employee" />
             </Scene>
           </Scene>
         </Router>

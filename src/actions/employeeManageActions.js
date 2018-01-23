@@ -36,7 +36,6 @@ export function fetchEmployees() {
       .database()
       .ref(`/users/${currentUser.uid}/employees`)
       .on('value', snapshot => {
-        console.log('snap: ', snapshot.val());
         dispatch({
           type: EMPLOYEES_FETCH_SUCCESS,
           snapshot: snapshot.val()
