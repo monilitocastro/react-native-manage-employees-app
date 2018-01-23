@@ -13,7 +13,7 @@ class EmployeeList extends Component {
       <View style={style.LinkViewStyle}>
         <TouchableOpacity
           onPress={() => {
-            Actions.employeeManage();
+            Actions.employeeCreate();
           }}
         >
           <Text style={style.LinkStyle}>Add</Text>
@@ -39,7 +39,11 @@ class EmployeeList extends Component {
     const { name, uid } = employee;
     return (
       <CardSection>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            Actions.employeeEdit({ uid });
+          }}
+        >
           <Text style={style.nameStyle}>{name}</Text>
         </TouchableOpacity>
       </CardSection>
