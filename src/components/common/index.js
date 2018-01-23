@@ -5,3 +5,4 @@ export * from './CommonButton';
 export * from './ErrorText';
 export * from './Spinner';
 export * from './LabeledPicker';
+export * from './DialogBox';

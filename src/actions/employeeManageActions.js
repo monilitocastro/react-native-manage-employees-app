@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-
+import { text as phoneText } from 'react-native-communications';
 import { Actions } from 'react-native-router-flux';
 import {
   SET_EMPLOYEE_INFO,
@@ -77,6 +77,26 @@ export function fetchOneEmployee(uid) {
           type: SET_MULTIPLE_EMPLOYEE_INFO,
           employee: snapshot.val()
         });
+      });
+  };
+}
+
+export function textEmployee({ phone, shift }) {
+  return dispatch => {
+    phoneText(phone, `You are scheduled to work on ${shift}`);
+  };
+}
+
+export function fireEmployee(uid) {
+  console.log('Firing employee...');
+  const { currentUser } = firebase.auth();
+  return dispatch => {
+    firebase
+      .database()
+      .ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .remove()
+      .then(() => {
+        Actions.pop();
       });
   };
 }

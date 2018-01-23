@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, View, ListView } from 'react-native';
+import { Text, TouchableOpacity, View, ListView, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Map from 'lodash.map';
@@ -52,7 +52,9 @@ class EmployeeList extends Component {
   render() {
     return (
       <Card>
-        <ListView dataSource={this.employees} renderRow={this.renderRow.bind(this)} />
+        <ScrollView>
+          <ListView dataSource={this.employees} renderRow={this.renderRow.bind(this)} />
+        </ScrollView>
       </Card>
     );
   }
