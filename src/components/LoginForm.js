@@ -43,7 +43,7 @@ class LoginForm extends Component {
             value={email}
           />
         </CardSection>
-        <CardSection top>
+        <CardSection>
           <Input
             label={'Password'}
             placeholder={'enter password'}
@@ -57,7 +57,7 @@ class LoginForm extends Component {
         <CardSection>
           <CommonButton
             onPress={() => {
-              this.props.setEmployeeInfo({ field: 'name', value: 'August' });
+              this.props.attemptLogIn('test@test.com', 'password');
             }}
             title="Test"
           />
@@ -66,7 +66,7 @@ class LoginForm extends Component {
     );
   }
 }
-//{ onPress, title }
+
 function mapStateToProps(state) {
   return {
     email: state.authReducer.email,

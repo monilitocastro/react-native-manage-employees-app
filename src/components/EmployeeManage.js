@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { Card, CardSection, Input, LabeledPicker, CommonButton } from './common';
 import * as actions from '../actions';
 
-// { label, placeholder, secureTextEntry, onChangeText, value }
+// TODO don't repeat yourself situation here. clean it up
 class EmployeeManage extends Component {
   render() {
     const { name, phone, shift } = this.props;
+
     return (
       <Card>
         <CardSection top>
@@ -44,9 +45,9 @@ class EmployeeManage extends Component {
         <CardSection>
           <CommonButton
             onPress={() => {
-              this.props.setEmployeeInfo({ field: 'name', value: 'August' });
+              this.props.createEmployeeInfo({ name, phone, shift: shift || 'Monday' });
             }}
-            title="Save"
+            title="Create"
           />
         </CardSection>
 
